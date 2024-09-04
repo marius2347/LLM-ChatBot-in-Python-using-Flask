@@ -1,4 +1,4 @@
-# LLM ChatBot in Python using Transformers Models & Flask
+# LLM ChatBot in Python using Transformers & Flask
 
 ## Features
 - Run the application in console: `python app.py`
