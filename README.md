@@ -20,7 +20,7 @@
 
 
 <h2>Video</h2>
-[Watch the video](https://github.com/marius2347/LLM-ChatBot-in-Python-using-Flask/blob/main/video.avi)
+[Watch the video](https://github.com/marius2347/LLM-ChatBot-in-Python-using-Flask/blob/main/video.mp4)
 <br>
 <h2>Contact</h2>
 
