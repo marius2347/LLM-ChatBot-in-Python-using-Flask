@@ -14,9 +14,13 @@
 **Python3**: [http://bit.ly/python3-certifications](http://bit.ly/python3-certifications)  
 **Machine Learning**: [https://bit.ly/machine-learning-certification](https://bit.ly/machine-learning-certification)
 
-## Video
+## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/213Xu6_QfzI/maxresdefault.jpg)](https://www.youtube.com/shorts/213Xu6_QfzI)
+Here is a GIF demonstrating the key features of the application:
+
+![Demo Video](https://github.com/username/repository/blob/main/path/to/video.gif)
+
+> Note: The GIF may take some time to load due to its size.
 
 ## Contact
 
