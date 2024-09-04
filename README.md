@@ -20,16 +20,11 @@
 
 
 <h2>Video</h2>
-<video src="./video.avi" controls width="300">
-  This browser does not support HTML video.
-</video>
+[Watch the video](https://github.com/marius2347/LLM-ChatBot-in-Python-using-Flask/blob/main/video.avi)
 <br>
 <h2>Contact</h2>
 
 <b> Email: mariusc0023@gmail.com </b>
 
-
-
-<h2>This is an HTML video:</h2>
 
 
