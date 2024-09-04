@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot | Flask</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        select, textarea, input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        #language, #language-text {
+            display: none; 
+        }
+
+        #language-text {
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        .response-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+            position: relative;
+            min-height: 200px;
+            overflow: auto; 
+            white-space: normal;
+        }
+
+        .typing-animation {
+            display: inline;
+            border-right: 2px solid #007bff;
+            white-space: pre-wrap;
+            word-wrap: break-word; 
+            animation: typing 4s steps(40, end) 1s 1 normal both,
+                    blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #007bff; }
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 10px;
+                margin: 10px;
+            }
+            textarea {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            select, input[type="submit"] {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>ChatBot</h1>
+    <form method="POST">
+        <input type="hidden" id="task" name="task" value="">
+        
+        <div class="buttons">
+            <label for="task-selection">Task</label><br>
+            <button type="button" onclick="setTask('review')">Movie Review Sentiment</button>
+            <button type="button" onclick="setTask('summarization')">Summarization</button>
+            <button type="button" onclick="setTask('translation')">Translation</button>
+        </div>
+        
+        <div id="translation-options">
+            <label id="language-text" for="language">Language</label><br>
+            <select id="language" name="language">
+                <option value="en_to_fr">English to French</option>
+                <option value="fr_to_en">French to English</option>
+                <option value="en_to_es">English to Spanish</option>
+                <option value="es_to_en">Spanish to English</option>
+                <option value="en_to_de">English to German</option>
+                <option value="de_to_en">German to English</option>
+            </select>
+            <br><br>
+        </div>
+    
+        <label for="text">Text</label><br><br>
+        <textarea id="text" name="text" rows="10" required></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    {% if text %}
+        <div class="response-box">
+            <div class="typing-animation" data-text="{{ result }}"></div>
+        </div>
+    {% endif %}
+    <script>
+        function setTask(task) {
+            document.getElementById('task').value = task;
+            if (task === 'translation') {
+                document.getElementById('language').style.display = 'block';
+                document.getElementById('language-text').style.display = 'block';
+            } else {
+                document.getElementById('language').style.display = 'none';
+                document.getElementById('language-text').style.display = 'none';
+            }
+        }
+
+        function typeText(element, text, speed) {
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, speed);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultElement = document.querySelector('.typing-animation');
+            if (resultElement && resultElement.dataset.text) {
+                typeText(resultElement, resultElement.dataset.text, 50); 
+            }
+        });
+    </script>
+</body>
+</html>
