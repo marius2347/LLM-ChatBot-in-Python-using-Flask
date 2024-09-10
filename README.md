@@ -15,7 +15,7 @@
 **Machine Learning**: [https://bit.ly/machine-learning-certification](https://bit.ly/machine-learning-certification)
 <br>
 **Large Language Models**: [https://bit.ly/large-language-models-certification](https://bit.ly/large-language-models-certification)
-
+**Responsive Web Design**: [https://bit.ly/responsive-web-design-certifications](https://bit.ly/responsive-web-design-certifications)
 
 ## Demo Video
 
